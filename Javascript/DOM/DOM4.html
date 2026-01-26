@@ -29,6 +29,21 @@
     addOpmtiLang("typescript")
 
     //edit
-      
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML = "Java" -> not a good way
+
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secondLang.replaceWith(newli)
+
+    //another method of edit
+    const firstChild = document.querySelector('li:first-child')
+    firstChild.outerHTML = "<li>HTML</li>"
+
+    //remove
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+
+    
 </script>
 </html>
