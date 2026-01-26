@@ -4,6 +4,7 @@ let name = "Nagamani";
 
 // console.log(name + " is beautiful!!");
 
+//string interolation- using `` backticks to print the strings 
 // console.log(`${name} is proficient in coding`);
 
 //another way of declaring strings

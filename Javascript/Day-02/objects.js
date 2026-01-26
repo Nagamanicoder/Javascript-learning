@@ -6,15 +6,15 @@
 //Object literals 
 
 // in objects the key is always a string without specifing it with quotes but the value can be of any datatype
-const JSuser = {
+let JSuser = {
     name : "Mani",
     "full name": "Nagamani"
 }
 //accessing the values of the object
 //dot operator ->  this format is used only when the key is not specified with the quotes
 //square braces -> this can be used in any of the situations
-console.log(JSuser.name); 
-console.log(JSuser["full name"]);
+// console.log(JSuser.name); 
+// console.log(JSuser["full name"]);
 // console.log(JSuser.full name); //this way cannot be used so it need to be used in square braces
 
 //using symbols as keys in the objects
@@ -26,6 +26,23 @@ let obj= {
 }
 
 //accessing the key value
-console.log(obj[mykey]);
+// console.log(obj[mykey]);
 
+
+//ojects can also be freezed usig the freeze 
+//freezing doesnot allow to modify the objects
+// Object.freeze(JSuser);
+
+//adding function in objects
+
+JSuser.greeting = function(){ //function treated as a variable
+    console.log("Hello JS user");
+}
+
+JSuser.greetingTwo = function(){ //function treated as a variable
+    console.log(`Hello JS user, ${this["full name"]}`);
+}
+
+console.log(JSuser.greeting());//when the [Function (anonymous)] ->function refernce
+console.log(JSuser.greetingTwo());//Hello JS user and returned undefined
 

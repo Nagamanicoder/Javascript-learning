@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <div class="parent">
+        <!-- a comment -->
+        <p class="day">Mon</p>
+        <p class="day">Tue</p>
+        <p class="day">Wed</p>
+        <p class="day">Thurs</p>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector('.parent')
+    // console.log(parent); // gives the html structure
+    // console.log(parent.children); //gives the children in an html collection
+    // console.log(parent.children[0].innerHTML);
+
+    //the html collection can be iterated using normal for loop
+
+    for (let i = 0; i < parent.children.length; i++) {
+        // console.log(parent.children[i].innerText)
+    }
+    //firstChild and secondChild from the parent
+    // console.log(parent.firstElementChild.innerText);
+    // console.log(parent.lastElementChild);
+    
+    const secondDay = document.querySelector('.day')
+    // console.log(secondDay.innerText);
+    // console.log(secondDay.parentElement); //accessing parent via child
+    // console.log(secondDay.nextSibling);
+    // console.log(secondDay.nextElementSibling);
+
+    //Nodelist -> child Nodes 
+    //child nodes contains all the information of the childnodes even the linebreaks
+    console.log("Nodes: ", parent.childNodes);
+    
+    
+        
+    
+    
+    
+    
+</script>
+</html>

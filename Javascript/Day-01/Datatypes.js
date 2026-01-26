@@ -4,7 +4,7 @@ let school = "VN school";
 let isloggedIn = false;
 
 //number -> have range of 2 to power 53 (approx)
-//string 
+//string -> sequennce number of characters
 //boolean -> true or false 
 //null -> assigning a null value and it can also returned by the functions 
 //undefined -> declared but not assigned value 

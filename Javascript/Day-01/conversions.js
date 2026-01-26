@@ -20,7 +20,7 @@ let valueInNumber = Number(score) //to convert in number datatype
 //in boolean conversion 
 // 1 => true; 0 => false
 //"" => false
-//"hitesh" => true
+//"mani" => true
 
 let booleanValue = true 
 

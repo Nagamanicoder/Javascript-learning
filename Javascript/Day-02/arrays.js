@@ -3,7 +3,7 @@
 
 //most important note is: 
 //> in arrays, the array copy operations happen that create shallow copies of the elements
-// Shallow copy means that the refernce of the array is created meaning the original array is affected 
+//Shallow copy means that the refernce of the array is created meaning the original array is affected 
 //Deep copy means the array the is created a copoy of the original array and the original array is not affected
 
 //Creating an array
@@ -65,7 +65,7 @@ myArr.slice(0,4) //doesnot includes last index specifed here
 //to access the elements of the inner array
 // console.log(colors[3][1]); 
 
-//to concatenate the wo arrays -> use concat method
+//to concatenate the two arrays -> use concat method
 //concat method concatenates two arrays and returns new array without changing the original arrays
 
 let arr1 = [1,2,3,3,4,5]
@@ -77,6 +77,8 @@ let result = arr1.concat(arr2)
 //spread operator also does the same work as the concat
 
 //the spread operator is ... 
+//to expand or unpack elements of an iterable (like an array, string, or set) 
+// or properties of an object into places where multiple elements or properties are expected. 
 //the spread operator spreads the elements
 //concat more than two arrays
 

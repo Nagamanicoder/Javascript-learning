@@ -1,0 +1,134 @@
+///DOM manipulations using selectors in Javascript
+
+document.getElementById('title')
+<h1 class=​"heading" id=​"title">​DOM learning on Chai aur code​</h1>​
+document.getElementById('title').id
+'title'
+document.getElementById('title').class
+undefined
+document.getElementById('title').className
+'heading'
+document.getElementById('title').getAttribute
+ƒ getAttribute() { [native code] }
+document.getElementById('title').getAttribute()
+VM312:1 Uncaught TypeError: Failed to execute 'getAttribute' on 'Element': 1 argument required, but only 0 present.
+    at <anonymous>:1:34
+(anonymous) @ VM312:1Understand this error
+document.getElementById('title').getAttribute('id)
+VM319:1 Uncaught SyntaxError: Invalid or unexpected tokenUnderstand this error
+document.getElementById('title').getAttribute('id')
+'title'
+document.getElementById('title').getAttribute('classNamme')
+null
+document.getElementById('title').getAttribute('class')
+'heading'
+document.getElementById('title').setAttribute('class', 'test')
+undefined
+document.getElementById('title').setAttribute('class', 'test heading')
+
+
+const  title =  document.getElementById('title')
+undefined
+title.style
+CSSStyleDeclaration {accentColor: '', additiveSymbols: '', alignContent: '', alignItems: '', alignSelf: '', …}
+title.style.backgroundColor = 'blue'
+'blue'
+title.style.padd = '10px'
+'10px'
+title.style.borderRadius = 'blue'
+'blue'
+title.style.borderRadius = '10px'
+'10px'
+
+// Changing content in the webpage
+const  title =  document.getElementById('title')
+undefined
+title.textContent
+'DOM learning on Chai aur code'
+title.innerHTML
+'DOM learning on Chai aur code'
+title.innerText
+'DOM learning on Chai aur code'
+
+title.textContent //-> textContent shows all the text contents present in a node
+'DOM learning on Chai aur codenew text\n        '
+title.innerText //innerText-> shows the content visible on the screen 
+'DOM learning on Chai aur code'
+title.innerHTML //gives all the node with the inner html node content
+'DOM learning on Chai aur code<span style="display: none;">new text</span>\n        '
+
+
+//query Selector and query selectorAll 
+
+//the query selector gives the first child of the html element
+document.querySelector('h1')
+<h1 class=​"heading" id=​"title">​"DOM learning on Chai aur code"<span style=​"display:​ none;​">​new text​</span>​</h1>​
+
+//the query selector can be use to get the html elements by the id and class names as samme as in css
+
+document.querySelector('#title')
+<h1 class=​"heading" id=​"title">​…​</h1>​
+
+document.querySelector('.heading')
+<h1 class=​"heading" id=​"title">​…​</h1>​
+
+document.querySelector('.heading2')
+<h1 class=​"heading2">​DOM learning​</h1>​
+
+
+******************************************* Nodelist *********************************************
+A NodeList is an ordered, array-like collection of nodes (elements, text, comments, etc.) 
+in the Document Object Model (DOM) of a web page. 
+
+the querySelector returns the first element
+the querySelectorAll returns a nodelist even if there are only one element
+
+document.querySelectorAll('ul')
+NodeList [ul]0: ullength: 1[[Prototype]]: NodeListentries: ƒ entries()forEach: ƒ forEach()item: ƒ item()keys: ƒ keys()length: (...)values: ƒ values()constructor: ƒ NodeList()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "NodeList"get length: ƒ length()[[Prototype]]: Object
+
+const list = document.querySelector('ul')
+undefined
+
+list
+<ul style=​"background-color:​ blue;​ border-radius:​ 15px;​">​…​</ul>​
+
+
+//setting attributes and values for the Nodelist
+
+//styles for the nodelist cannot be set as it is a list 
+
+const list = document.querySelectorAll('ul')
+undefined
+
+list.style.color = 'green'
+VM3198:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+    at <anonymous>:1:18
+(anonymous) @ VM3198:1Understand this error
+
+//setting properties for the list is same as the array like 
+
+const list = document.querySelectorAll('li') ->the array like which comes that is selected
+undefined
+list
+NodeList(4) [li, li, li, li]
+list[0].style.color = 'gold'
+'gold'
+
+// Applying foreach loop for the nodelist 
+
+list.forEach((li) => {
+    li.style.color = 'yellow'
+})
+
+********************************************* HTML Collections ****************************************
+//HTML Collections -> returned when the getElementByClassName is used 
+//which doesnot have any looping facilities 
+//to convert html collection to array 
+
+const lists = document.getElementsByClassName('list')
+undefined
+lists
+HTMLCollection(4) [li.list, li.list, li.list, li.list]
+Array.from(lists)
+(4) [li.list, li.list, li.list, li.list]
+

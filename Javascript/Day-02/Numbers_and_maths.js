@@ -33,8 +33,15 @@ let max = 20;
 let minVal = 8;
 let maxVal = 20;
 
-console.log(Math.floor(Math.random()*(maxVal-minVal+1))+minVal); 
+// console.log(Math.floor(Math.random()*(maxVal-minVal+1))+minVal); 
 
+let minValue = 24
+let maxValue = 30
+
+console.log(Math.floor(Math.random()*(maxValue-minValue+1))+minValue);
+
+//for deduction of the steps see chatgpt information
+//https://chatgpt.com/share/6971b078-3798-8002-89fd-dabe5447888e
 
 
 

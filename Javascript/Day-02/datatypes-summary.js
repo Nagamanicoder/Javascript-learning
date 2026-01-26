@@ -1,9 +1,9 @@
 // The data types in JavaScript can be broadly categorized into two types: Primitive and Non-Primitive (Reference) data types.
 // the data types are categorized on the basis of the call by value and call by reference mechanism.
-// and on the basis of they > are accessed and stored in the memory.
+// and on the basis of they are accessed and stored in the memory.
 
 //Primitive data types:
-// the datatypes when created with this are gives an as copy of the created datatype
+// the datatypes when created with this are gives as copy of the created datatype
 
 //7 primitive datatypes: String, Number, Boolean, null(empty), undefined, Symbol, BigInt 
 
@@ -19,10 +19,13 @@ const tmp = null; //null -> empty value
 let undefinedValue = undefined; //undefined -> value not assigned
 let undefinedValue2; 
 
+//symbol -> are the primitive datatypes and builtin objects
+//
+
 let id = Symbol('123') //if we want to create unique identifiers, use symbol and that return symbol datatype
 let anotherId = Symbol('123')
 
-// console.log(id === anotherId);
+// console.log(id === anotherId); //two different symbols of same description are not equal
 
 const bigNumber = 45879154631546234873856n //n repersents the bigint
 
@@ -30,16 +33,18 @@ const bigNumber = 45879154631546234873856n //n repersents the bigint
 
 
 //Non primitive or refernce datatypes: 
-//the refernce of the datatypes is given meaning that the datatypes are modified by user are modified in the memory
+//the refernce of the datatypes is given meaning that the datatypes are modified by user that modifies in the memory
+//the non rimitive datatypes are affected by change
 
 //Array, Objects, Functions 
 //all non primitive datatypes return "object" as thier type 
 
 const danceForms = ["Kathak", "Bharatanatyam", "HipHop"]; //array
 
+//object 
 let myObj = {
     "name2" : "mani", 
-    "age" : 20, //object 
+    "age" : 20, 
 }
 
 const myFunction = function () {
@@ -95,10 +100,11 @@ let myInfo = {
 }
 
 let myInfo2 = myInfo; //here the reference of the myInfo is assigned to info
+//both myinfo2 and myinfo contain same values and if one is changed , the otherreferring to it also changes.
 
 myInfo2.number = 9999999;
 
-console.log(myInfo);
+console.log(myInfo); 9999999
 
 //the variable myInfo and myInfo2 points to the same memory location in the heap memory
 //So when we change the value of myInfo2 it also affects the myInfo value
