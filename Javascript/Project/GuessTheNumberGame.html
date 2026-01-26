@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      .container {
+        height: 100vh;
+        background-color: black;
+        color: white;
+      }
+      .guessForm {
+        background-color: grey;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .guesses {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <h3>Number Guessing Game!!</h3>
+      <div class="guessForm">
+        <form>
+          <label for="guessField"> Guess The number</label>
+          <p><input id="guessField" type="text" /></p>
+          <button type="submit" id="submit">Submit guess</button>
+        </form>
+        <div id="results-paras">
+          <p>Previous Guesses: <span class="guesses"></span></p>
+          <p>Remaining Guesses: <span class="attempts">10</span></p>
+          <p class="lowOrhi"></p>
+        </div>
+        
+      </div>
+    </div>
+    <script>
+        let randomNumber = parseInt(Math.random() * 100 + 1);
+
+        const userInput = document.querySelector('#guessField');
+        const submit = document.querySelector('#submit');
+        const guessSlot = document.querySelector('.guesses');
+        const attemptsSlot = document.querySelector('.attempts');
+        const lowOrhi = document.querySelector('.lowOrhi');
+        const results = document.querySelector('#results-paras');
+
+        const p = document.createElement('p');
+
+        let playGame = true;
+
+        let prevGuess = [];
+        let numGuess = 1;
+
+        if (playGame) {
+        submit.addEventListener('click', function (e) {
+            e.preventDefault();
+            const guess = parseInt(userInput.value);
+            validateInput(guess);
+        });
+        }
+
+        function validateInput(guess) {
+        if (isNaN(guess)) {
+            alert('Please enter a valid number!!');
+        } else if (guess < 1) {
+            alert('Please enter a number more than 1');
+        } else if (guess > 100) {
+            alert('Please enter a number less than 100');
+        } else {
+            prevGuess.push(guess);
+
+            if (numGuess === 11) {
+            displayGuess(guess);
+            displayMessage(`Game Over! , random number was ${randomNumber}`);
+            endGame();
+            } else {
+            displayGuess(guess);
+            checkGuess(guess);
+            }
+        }
+        }
+
+        function checkGuess(guess) {
+        if (guess < randomNumber) {
+            displayMessage('The number is TOOO low');
+        } else if (guess > randomNumber) {
+            displayMessage('The number is TOOO high');
+        } else {
+            displayMessage('Congratuations!, You guessed the number right!');
+            endGame();
+        }
+        }
+
+        function displayGuess(guess) {
+        userInput.value = '';
+        guessSlot.innerHTML += `${guess} `;
+        numGuess++;
+        attemptsSlot.innerHTML = `${12 - numGuess}`;
+        }
+
+        function displayMessage(message) {
+        lowOrhi.innerHTML = `<h3>${message}</h3>`;
+        }
+
+        function endGame() {
+        userInput.value = '';
+        userInput.setAttribute('disabled', '');
+        p.innerHTML = `<h2 id="newGame" >Start New Game</h2>`;
+        results.appendChild(p);
+        playGame = false;
+        newGame();
+        }
+
+        function newGame() {
+        const startButton = document.querySelector('#newGame');
+        startButton.addEventListener('click', function (e) {
+            randomNumber = parseInt(Math.random() * 100 + 1);
+            prevGuess = [];
+            numGuess = 1;
+            guessSlot.innerHTML = '';
+            attemptsSlot.innerHTML = `${11 - numGuess}`;
+            userInput.removeAttribute('disabled');
+            results.removeChild(p);
+            displayMessage(' ');
+            playGame = true;
+        });
+        }
+
+    </script>
+  </body>
+</html>
