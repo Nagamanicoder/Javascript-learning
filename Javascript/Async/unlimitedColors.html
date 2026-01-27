@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg{
+            background-color: black;
+            height: 100vh;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg">
+    <h1>Change background color repeatedly</h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+</body>
+<script>
+    //generate a random color
+
+    const randomColor = function(){
+        const hex = "0123456789ABCDEF"
+        let color = "#"
+        for (let i = 0; i < 6; i++) {
+            color += hex[Math.floor(Math.random() * 16)]
+        }
+        return color
+    }
+    // console.log(randomColor());
+
+
+    let intervalId;
+    //start changing color
+    function startChangingColor(){
+        if(!intervalId){ //as for production ready
+            intervalId = setInterval(changeBgColor, 1000);
+        }
+        
+        function changeBgColor(){
+            document.body.style.backgroundColor = randomColor();
+        }
+    }
+
+    //stop
+    const stopChangingColor = function(){
+        clearInterval(intervalId)
+        intervalId = null //as for production ready app
+    }
+
+    document.querySelector('#start').addEventListener('click', startChangingColor) 
+    document.querySelector('#stop').addEventListener('click', stopChangingColor) 
+</script>
+</html>

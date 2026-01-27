@@ -1,0 +1,42 @@
+<!-- // The javascript is -> this is the default behaviour of the javscript
+// 1. synchronous 
+// 2. single threaded 
+
+//the execution does one line by one
+
+//the blocking code -> synchronous operation 
+// where the the code doesnot execute further when an error occurs
+//example read a file synchronously
+
+//the non blocking code -> Asynchronous operation
+// where the the code doesnot wait for the execution of the previous lines of code 
+
+//the setTimeout runs only once
+//the set timeout function takes the arguments as function ,delay, parameter may be upto n.
+//setting delay to 0 will execute in the next event cycle rather than "immediately"
+//setTimeout returns a positive interger knowns as timeout ID, used to clear the timeout -->
+
+<!DOCTYPE html
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Learning Javascript!!</h1>
+    <button id="newText">Change Text</button>
+</body>
+<script>
+    
+    const changeText = setTimeout(function(){
+        document.querySelector('h1').innerHTML = "Completed Javascript Learning!!"
+    }, 2000)
+
+    // clearTimeout(changeText)
+    document.querySelector('#newText').addEventListener('click',function(){
+        clearTimeout(changeText);
+        console.log("Not changed");    
+    })
+</script>
+</html>
