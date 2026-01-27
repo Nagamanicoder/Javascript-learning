@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img{
+            height: 250px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Events</h1>
+    <ul id="images">
+        <!-- <li><img src="https://images.pexels.com/photos/35224347/pexels-photo-35224347.jpeg" class="img" id="cake"></li> -->
+        <li><img src="https://images.pexels.com/photos/35770945/pexels-photo-35770945.jpeg" class="img" id="sunRise"></li>
+        <li><img src="https://images.pexels.com/photos/35563362/pexels-photo-35563362.jpeg" class="img" id="sparrow"></li>
+        
+    </ul>
+    <!-- <img src="https://images.pexels.com/photos/35827469/pexels-photo-35827469.jpeg" class="img" id="building"> -->
+    <!-- <img src="https://images.pexels.com/photos/35654591/pexels-photo-35654591.jpeg" class="img" id="library" onclick="alert('using onclick - not scalable approach')"> -->
+    
+    <a href="https://www.google.com/" id="google">Google</a>
+
+    <p>Time stamp- <span id="time"></span></p>
+    
+</body>
+<script>
+    // document.getElementById('building').onclick = function () {
+    //     alert("another approach - but not feasable")
+    // }
+
+    // document.getElementById('building').addEventListener('click', function(){
+    //     alert("efficient approach")
+    // }, false) //here the third parameter is asked in the interview -> what it's usage 
+
+    //attachEvent()
+    //jQuery - on 
+
+    //event object
+    //using the event object(e), make simple application like questions which includes the attributes given by the object
+    // document.getElementById('building').addEventListener('click', function(e){
+    //     console.log(e);
+        
+    // }, false) //the false is the default parameter
+
+    //Event propagation
+    //two context -> event bubbling, event capturing
+    //event bubbling -> default parameter (false)
+
+    // in the event bubbling, event propagation happes from the smaller elements to the larger elements
+    //from below code, the click on the mouse is happened, that executes cake code first which is inside the ul and then the ul code
+    
+    //event bubbling goes from the bottom to top of the event with default parameter as false
+    //event capturing goes from the top to bottom of the event wih default parameter as true
+
+    // document.getElementById("images").addEventListener('click', function(){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('cake').addEventListener('click', function(e){
+    //     console.log("clicked on the cake");
+    //     e.stopPropagation() //stops the bubbling propagation to the upper elements
+    // }, false)
+
+    //event capturing execution
+    // clicked inside the ul
+    // clicked on the cake
+
+    //event bubblig execution
+    // clicked on the cake
+    // clicked inside the ul
+
+
+    //to prevent the propagation of the google link to a new page and not to open
+
+    // document.getElementById('google').addEventListener('click', function(e){
+    //     e.preventDefault();
+    //     console.log("google link clicked");
+    // })
+
+    //onclicking the picture, the pictures need to be disappeared
+    // document.querySelector('#images').addEventListener('click', function(e){
+    //     console.log(e.target.parentNode);
+        
+    //     //to prevent default behaviour, to img only to be disappeare
+    //     console.log(e.target.tagName); 
+    //     if (e.target.tagName === 'IMG') {
+    //         console.log(e.target.id);
+    //         let removeLi = e.target.parentNode;
+    //         removeLi.remove();
+    //     }
+        
+    //     // let removeLi = e.target.parentNode;
+    //     // removeLi.remove();
+    //     // removeLi.parentNode.removeChild(removeLi) -> another method to remove the child pointing to the parent
+    //     //when mouse points to the parent and want to remove the child. this is called spill over
+    // })
+
+    //Click on image      → e.target = IMG → parentNode = LI
+    // Click on LI padding → e.target = LI  → parentNode = UL
+    // Click on UL space   → e.target = UL  → parentNode = BODY
+
+    //the concepts need to be learn
+    //type, timestamp, defaultPrevented or preventDefault
+    //target, toElement, srcElement, currentTarget,
+    //clentX, clientY, screenX, screenY
+    // altkey, ctrlKey, shiftKey, keycode
+
+    //the event type can be used using the getEventType, throught that the event type can get like mouse events or keboard events
+    // document.querySelector('#images').addEventListener('click', function(e){
+    //     console.log(e.type); 
+    // })
+
+    //timestamp
+    // document.body.addEventListener('keypress', function(e){
+    //     let Time = document.getElementById('time')
+    //     time.innerHTML = e.timeStamp
+    // })
+
+    //current target
+    // document.querySelector('#images').addEventListener('click', function(e){
+    //     console.log(e.target);//points to the element on which is clicked
+    //     console.log(e.currentTarget);//points to the current element given in id
+    // }) 
+    //the bubbling up happens when the curent target points to the higher id's or the grandparents
+
+    //the screen (user's monitor screen) and client
+    //the values of screenX, screenY is (0,0) when it is posiioned on the top left corner 
+    // document.querySelector('#images').addEventListener('mousemove', (e) => {
+    //     console.log(`Screen (X/Y): ${e.screenX} , ${e.screenY} `);
+    // })
+    
+    //the client points on the browser's viewport
+    // document.querySelector('#images').addEventListener('mousemove', (e) => {
+    //     console.log(`client (X/Y): ${e.clientX} , ${e.clientY} `);
+    // })
+
+    //shiftkey -> true when shift key is pressed while clicking with the mouse
+    document.querySelector('#images').addEventListener('click', (e) => {
+        // console.log(e.shiftKey);
+        // console.log(e.altKey);
+        // console.log(e.ctrlKey);
+        
+    })
+
+    //key code
+    window.addEventListener('keydown', (e) => {
+        console.log(e.key);
+        console.log(e.code);
+    })
+</script>
+</html>
