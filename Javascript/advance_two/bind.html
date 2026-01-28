@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Button clicked</button>
+</body>
+<script>
+    class react_dup{
+        constructor (){
+            this.library = "react"
+            this.server = "https:localhost/3000" 
+
+            //requirement to access the button or a usecase where all the elements on a page to be select
+
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+        }
+        handleClick (){
+            console.log('button clicked');
+            console.log(this); // <button>Button clicked</button> -> points to the button
+            console.log(this.server); //these cannot be accessed, because this points only to the button
+            console.log(this.library); // and not have access of the constructor variables so use bind keyword
+            
+            //after bind, the constructor variables can be accessed as it wil bind all the information 
+            
+        }
+    }
+
+    const virtualDom = new react_dup()
+</script>
+</html>
