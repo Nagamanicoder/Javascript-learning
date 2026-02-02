@@ -16,49 +16,71 @@
 </body>
 <script>
     //lexical scopping
-    function init() {
-        let name = "Mozilla"; // name is a local variable created by init
-        function displayName() {
-        // displayName() is the inner function, that forms a closure
-            console.log(name); // use variable declared in the parent function
-        }
-        displayName();
-    }
-    init();
+    // function init() {
+    //     let name = "Mozilla"; // name is a local variable created by init
+    //     function displayName() {
+    //     // displayName() is the inner function, that forms a closure
+    //         console.log(name); // use variable declared in the parent function
+    //     }
+    //     displayName();
+    // }
+    // init();
 
     //closure 
 
     function makeFunc() {
-        const name = "Mozilla";
+        let name = "Mozilla";
         function displayName() {
+            
             console.log(name);
         }
+        // name = 'new name'
         return displayName;
     }
 
-    const myFunc = makeFunc();
+    const myFunc = makeFunc(); //makeFuc returned value so to store that we use a variable
     myFunc();
 
 </script>
-<script>
-    // document.querySelector('#orange').addEventListener('click', function(){
-    //     document.body.style.backgroundColor = 'orange'
-    // })
+<!-- <script>
+    document.querySelector('#orange').addEventListener('click', function(){
+        document.body.style.backgroundColor = 'orange'
+    })
 
-    // document.querySelector('#green').addEventListener('click', function(){
-    //     document.body.style.backgroundColor = 'green'
-    // })
+    document.querySelector('#green').addEventListener('click', function(){
+        document.body.style.backgroundColor = 'green'
+    })
 
     //a function to handle the same operation
 
-    function clickHandler(color){
-        // document.body.style.backgroundColor = `${color}`
+    // function clickHandler(color){
+    //     // document.body.style.backgroundColor = `${color}`
 
-        return function(){
-            document.body.style.backgroundColor = `${color}`
-        }
-    }
-    document.querySelector('#orange').addEventListener('click', clickHandler("orange"))
-    document.querySelector('#green').addEventListener('click', clickHandler("green"))
-</script>
+    //     return function(){
+    //         document.body.style.backgroundColor = `${color}`
+    //     }
+    // }
+    // document.querySelector('#orange').addEventListener('click', clickHandler("orange"))
+    // document.querySelector('#green').addEventListener('click', clickHandler("green"))
+</script> -->
 </html>
+
+<!-- Closure behaviuor and its properties -->
+
+<!-- Definition: A closure is a function that retains access to the lexical environment 
+where it was created (so the inner function can access outer variables).
+
+Lexical capture: The function captures variables from its surrounding scope 
+(e.g., displayName captures name from makeFunc).
+
+Lifetime: Captured bindings stay alive after the outer function 
+returns — the environment is retained as long as the closure exists.
+
+By-reference: Closures capture bindings, not immutable snapshots 
+they observe the current value of the variable when executed.
+
+Use cases: Data privacy (private variables), function factories, partial application,
+ event handlers, and callback state.
+
+Pitfalls: Can cause unintended memory retention or stale/shared state (careful with loops and var); 
+prefer let/const and explicit patterns to avoid surprises. -->
